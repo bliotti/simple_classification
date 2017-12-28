@@ -1,0 +1,22 @@
+import tweepy
+from textblob import TextBlob
+
+consumer_key = 'vyvtys65nidPGFv2HCpQrAXcJ'
+consumer_secret = '70Gk0NLKtJ8W3WG1MPlxcajM1oOyCUglfFKDEt4G6Sz9yGpZWg'
+
+access_token = '189267857-TXBcYjMWkSjze364QorksUyVFTAdBPt6aEVoXqiB'
+access_token_secret = 'AfjiE9ojDScQvIGMS6YiwArxAlfY67Q9xPRApYPtWUDag'
+
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+
+api = tweepy.API(auth)
+
+public_tweets = api.search('Segwit2x')
+
+for tweet in public_tweets:
+    print('')
+    print(tweet.text)
+    analysis = TextBlob(tweet.text)
+    print(analysis.sentiment)
+    print('')
